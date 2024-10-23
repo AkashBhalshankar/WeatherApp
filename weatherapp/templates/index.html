@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Current Weather</title>
+</head>
+<body>
+    <h1>Current Weather Data</h1>
+    <table>
+        <tr>
+            <th>City</th>
+            <th>Temperature (°C)</th>
+            <th>Feels Like (°C)</th>
+            <th>Weather Condition</th>
+        </tr>
+        {% for city, temp, feels_like, condition in weather_data %}
+        <tr>
+            <td>{{ city }}</td>
+            <td>{{ temp }}</td>
+            <td>{{ feels_like }}</td>
+            <td>{{ condition }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'summary' %}">View Daily Summary</a>
+</body>
+</html>

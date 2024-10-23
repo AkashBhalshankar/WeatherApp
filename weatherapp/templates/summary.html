@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Daily Weather Summary</title>
+</head>
+<body>
+    <h1>Daily Weather Summary</h1>
+    
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Average Temperature (°C)</th>
+            <th>Max Temperature (°C)</th>
+            <th>Min Temperature (°C)</th>
+            <th>Dominant Weather Condition</th>
+        </tr>
+        {% for summary in weather_summaries %}
+        <tr>
+            <td>{{ summary.date }}</td>
+            <td>{{ summary.average_temperature }}</td>
+            <td>{{ summary.max_temperature }}</td>
+            <td>{{ summary.min_temperature }}</td>
+            <td>{{ summary.dominant_condition }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Alerts</h2>
+    <ul>
+        {% for alert in alerts %}
+        <li>{{ alert }}</li>
+        {% empty %}
+        <li>No alerts triggered.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'index' %}">Go back to current weather</a>
+</body>
+</html>
