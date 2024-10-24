@@ -1,9 +1,3 @@
-
----
-
-### Weather Monitoring System – README.md
-
-```markdown
 # Weather Monitoring System with Django
 
 ## Project Description
